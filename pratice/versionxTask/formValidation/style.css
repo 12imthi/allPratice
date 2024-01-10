@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#error {
+    color: red;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 30%; */
+}
+input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+.input-group {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    align-self: center;
+}
+span {
+    color: red;
+}
+#repwd-error {
+    color: red;
+}

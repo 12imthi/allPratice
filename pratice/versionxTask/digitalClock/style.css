@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    color: #4DC9F2;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: cursive;
+}

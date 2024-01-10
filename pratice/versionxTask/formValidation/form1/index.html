@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        <label>Username</label><br>
+        <input type="text" id="name" oninput="nameValid()" > <br>
+        <span id="nameE" style="color: red;"></span>
+    </div>
+    <div>
+        <label>email</label><br>
+        <input type="email" id="email" onkeyup="emailValid()"> <br>
+        <span id="emailE" style="color: red;"></span>
+    </div>
+    <!-- <button onclick="valid()">valid</button> -->
+</body>
+
+</html>

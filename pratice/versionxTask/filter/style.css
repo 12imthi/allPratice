@@ -1,0 +1,58 @@
+img {
+    width: 120px;
+    border: 1px solid black;
+    display: flex;
+    padding: 10px;
+}
+
+#demo {
+    height: 90vh;
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    align-content: center;
+}
+
+.child {
+    background-color: rgb(195, 196, 196);
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.parent {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+
+}
+
+button {
+    padding: 6px;
+    width: 120px;
+}
+
+.items-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.search-btn {
+    display: flex;
+    justify-content: space-around;
+    width: 22%;
+    margin: auto;
+}
+#err {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: gray;
+    background-image: url(img/nature-4.jpg) ;
+  background-position: center;
+  background-size: cover;
+}
+img {
+    width: 1600px;
+    height: auto;
+    /* object-fit: contain; */
+
+    /* max-width: 50%; */
+}
+#imageContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 97vh;
+    /* border: 1px solid black;
+    b */
+    /* background-color: gray; */
+}
+.next {
+    display: flex;
+    justify-content: center;
+}

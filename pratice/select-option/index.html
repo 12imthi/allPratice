@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select id="countriesDropDown">
+  </select>
+
+  <div id="flag-icon">
+  </div>
+  <script>
+    const countriesDropDown = document.getElementById("countriesDropDown");
+    const flagIcon = document.getElementById("flag-icon");
+    const countriesData = {
+      "Australia": "🇦🇺",
+      "Canada": "🇨🇦",
+      "United Kingdom": "UK",
+      "USA": "🇺🇸",
+      "India" : "IN"
+    }
+
+    for (let key in countriesData) {
+      console.log('key : ', key);
+      let option = document.createElement("option");
+      option.setAttribute('value', countriesData[key]);
+      console.log(`option`, option);
+      let optionText = document.createTextNode(key);
+      option.appendChild(optionText);
+      countriesDropDown.appendChild(option);
+    }
+    countriesDropDown.addEventListener("change", e => {
+      flagIcon.innerHTML = e.target.value;
+    })
+
+  </script>
+</body>
+
+</html>

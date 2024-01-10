@@ -1,0 +1,14 @@
+.spn {
+    background-color: blue;
+    padding: 4px  ;
+    border-radius: 10px;
+    margin-left: 20px;
+    color: white;
+}
+.complete {
+    text-decoration: line-through;
+    text-decoration-color: brown;
+}
+#err {
+    color: red;
+}

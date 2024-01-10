@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .background {
+            background-color: red
+        }
+
+        .background1 {
+            background-color: lightgreen
+        }
+
+        .color {
+            color: blue
+        }
+
+        .font {
+            font-size: 24px;
+        }
+
+        .border {
+            border: 10px solid black
+        }
+
+        .color1 {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="part1" class="background color font">classList</div>
+    <br><br><br>
+
+    <div id="part2" class="background color font">className</div>
+    <br><br><br>
+
+    <button onclick="funcAdd()">Add a border class</button>
+    <button onclick="funcRemove()">Remove a color class</button>
+    <button onclick="funcReplace()">Replace a background class</button>
+    <button onclick="funcToggle()">Toggle a color class</button>
+    <br><br>
+
+    <script>
+        var classList1 = document.getElementById("part1")
+        var classname2 = document.getElementById("part2")
+
+        function funcAdd() {
+            classList1.classList.add("border");
+            classname2.className = "border";
+        }
+
+        function funcRemove() {
+            classList1.classList.remove("color");
+            classname2.style.color = "black";
+        }
+
+        function funcReplace() {
+            classList1.classList.replace("background", "background1");
+            classname2.style.backgroundColor = "lightgreen";
+        }
+
+        function funcToggle() {
+            classList1.classList.toggle("color1");
+            if (classname2.style.color == "gold") {
+                classname2.style.color = "blue";
+            } else {
+                classname2.style.color = "gold";
+            }
+        }
+    </script>
+</body>
+
+</html>

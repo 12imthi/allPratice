@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.container-fluid {
+    height: 100vh;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+img {
+    width: 100px;
+}
+.row-1  {
+    display: flex;
+    justify-content: space-around;
+}
+.row-2  {
+    display: flex;
+    justify-content: space-around;
+}
+.col-2 {
+    background-color: whitesmoke;
+    margin-bottom: 10px;
+}
