@@ -10,7 +10,7 @@ let promise = new Promise((resolve, reject) => {
     } else {
         setTimeout(() => {
             reject('Promise rejected');
-        }, 5000);
+        }, 9000);
     }
 });
 
