@@ -1,12 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagenigation</title>
+<style>
+#div1 {
+  display: grid;
+  grid-auto-flow: column; /* Arrange items in a row */
+  gap: 10px; /* Gap between grid items */
+  width: 100%; /* Full width */
+  border: 1px solid black;
+  overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+.input-field {
+  position: relative; /* Relative positioning for draggable */
+  background-color: blue;
+  padding: 10px;
+}
+
+/* Ensure text fields fill their grid cells */
+.input-field input {
+  width: 100%; /* Fill the available width */
+  box-sizing: border-box; /* Include padding in width */
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  // Set the ID of the dragged element as the data to be transferred
+  ev.dataTransfer.setData("text/plain", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text/plain"); // Retrieve the ID of the dragged element
+  var inputField = document.getElementById(data);
+
+  // Reset input field position
+  inputField.style.left = "0";
+  inputField.style.top = "0";
+
+  // Append the input field back to the container
+  var container = ev.currentTarget;
+  container.insertAdjacentElement("beforeend", inputField);
+}
+</script>
 </head>
 <body>
-    
+
+<h2>Drag and Drop</h2>
+<p>Drag the input fields back and forth within the grid.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <!-- Initial input field -->
+  <div 
+    class="input-field" 
+    id="drag1" 
+    draggable="true" 
+    ondragstart="drag(event)"
+  >
+    <input type="text" value="Text Field 1">
+  </div>
+</div>
+
 </body>
 </html>

@@ -3,7 +3,7 @@ const users = [
   { id: 2, name: "afzal", age: 22 },
   { id: 3, name: "haq", age: 20 },
 ];
-let currentUserId = null;
+
 let userCount = users.length;
 
 

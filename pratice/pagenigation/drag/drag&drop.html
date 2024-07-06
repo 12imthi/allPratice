@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .deck {
+  width: 95%;
+  margin: 10px;
+  background: #DADADA;
+  border: solid 2px black;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+.card {
+  border: solid 1px #808080;
+  background-color: white;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 14pt;
+  text-align: center;
+  color: black;
+  margin: 3px;
+  height: 50px;
+  width: 90px;
+}
+
+.btn {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.card .value {
+  font-size: 15pt;
+  font-family: sans-serif;
+}
+
+.box {
+  background-color: white;
+  height: 50px;
+  width: 90px;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 14pt;
+  text-align: center;
+  margin: 3px;
+  border: dotted #000;
+  border-width: medium;
+}
+
+.box.nouns {
+  background-color: grey;
+}
+
+.playingSpace {
+  background-color: lightblue;
+}
+    </style>
+</head>
+<body>
+    <div id="deck"></div>
+<div id="deck2"></div>
+
+<div class="playingSpace">
+  <div class="box" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+
+  <h2>Your cards</h2>
+
+  <div id="hand" ondragover="onDragOver(event);" ondrop="onDrop(event);"></div>
+</div>
+
+<script>
+    var nounCards = ["a", "b", "c"];
+var verbCards = ["1", "2", "3"];
+
+var deck = new Array();
+var deck2 = new Array();
+var hand = new Array();
+
+function getDeck() {
+  var deck = new Array();
+  for (var x = 0; x < nounCards.length; x++) {
+    var nounCard = {
+      Value: nounCards[x][0]
+    };
+    deck.push(nounCard);
+  }
+  return deck;
+}
+
+function getDeck2() {
+  var deck2 = new Array();
+  for (var x = 0; x < verbCards.length; x++) {
+    var verbCard = {
+      Value: verbCards[x]
+    };
+    deck2.push(verbCard);
+  }
+  return deck2;
+}
+
+function getHand() {
+  var hand = new Array();
+  for (var x = 0; x < 2; x++) {
+    var verbCard = {
+      Value: verbCards[x]
+    };
+    hand.push(verbCard);
+  }
+  for (var x = 0; x < 2; x++) {
+    var nounCard = {
+      Value: nounCards[x][0]
+    };
+    hand.push(nounCard);
+  }
+  return hand;
+}
+
+function shuffle() {
+  // for 1000 turns
+  // switch the values of two random cards
+  for (var i = 0; i < 1000; i++) {
+    var location1 = Math.floor((Math.random() * deck.length));
+    var location2 = Math.floor((Math.random() * deck.length));
+    var tmp = deck[location1];
+
+    deck[location1] = deck[location2];
+    deck[location2] = tmp;
+
+    var location1 = Math.floor((Math.random() * deck2.length));
+    var location2 = Math.floor((Math.random() * deck2.length));
+    var tmp = deck2[location1];
+
+    deck2[location1] = deck2[location2];
+    deck2[location2] = tmp;
+  }
+
+  renderDeck();
+  renderDeck2();
+  renderHand();
+
+}
+
+function renderDeck() {
+  document.getElementById('deck').innerHTML = '';
+  for (var i = 0; i < deck.length; i++) {
+    var card = document.createElement("div");
+    var value = document.createElement("div");
+    card.className = "card";
+    value.className = "value";
+
+    value.innerHTML = deck[i].Value;
+    card.appendChild(value);
+
+    document.getElementById("deck").appendChild(card);
+  }
+}
+
+function renderDeck2() {
+  document.getElementById('deck2').innerHTML = '';
+  for (var i = 0; i < deck2.length; i++) {
+    var card = document.createElement("div");
+    var value = document.createElement("div");
+    card.className = "card";
+    value.className = "value";
+
+    value.innerHTML = deck2[i].Value;
+    card.appendChild(value);
+
+    document.getElementById("deck2").appendChild(card);
+  }
+}
+
+function renderHand() {
+  document.getElementById('hand').innerHTML = '';
+  for (var i = 0; i < hand.length; i++) {
+    //creating the actual card and making it a draggable element
+    var card = document.createElement("div");
+    card.setAttribute("draggable", "true");
+    card.setAttribute("ondragstart", "onDragStart(event);");
+
+    //setting the value or the "words" as a div
+    var value = document.createElement("div");
+
+    card.className = "card";
+    value.className = "value";
+
+    value.innerHTML = hand[i].Value;
+    card.appendChild(value);
+
+
+    //putting the card in the div
+    document.getElementById("hand").appendChild(card);
+  }
+}
+
+
+function onDragStart(event) {
+  event
+    .dataTransfer
+    .setData('text/plain', event.target.id);
+
+  event
+    .currentTarget
+    .style
+    .backgroundColor = 'lightblue';
+}
+
+function onDragOver(event) {
+  event.preventDefault();
+}
+
+function onDrop(event) {
+  const id = event
+    .dataTransfer
+    .getData('text');
+
+  const draggableElement = document.getElementById(id);
+
+  const dropzone = event.target;
+  dropzone.appendChild(draggableElement);
+
+  event
+    .dataTransfer
+    .clearData();
+}
+
+function load() {
+  deck = getDeck();
+  deck2 = getDeck2();
+  hand = getHand();
+  shuffle();
+
+}
+window.onload = load;
+</script>
+</body>
+</html>

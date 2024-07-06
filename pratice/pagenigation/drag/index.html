@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.container {
+  float: left;
+  position: relative;
+  width: 70%;
+  height: 50vh;
+  display: flex;
+  border: 3px solid black;
+}
+
+.container input {
+    display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var textField = document.getElementById(data);
+  var container = ev.target.closest('.container');
+
+  if (container) {
+    var rect = container.getBoundingClientRect();
+    var mouseX = ev.clientX - rect.left;
+    var mouseY = ev.clientY - rect.top;
+
+    textField.style.left = mouseX + "px";
+    textField.style.top = mouseY + "px";
+
+    container.appendChild(textField);
+  }
+}
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the text field back and forth within the div element. Each container has 50% width and 50vh height.</p>
+
+<div class="container" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <input 
+    type="text" 
+    id="drag1" 
+    value="Text Field 1" 
+    draggable="true" 
+    ondragstart="drag(event)"
+  >
+  <input 
+  type="text" 
+  id="drag2" 
+  value="Text Field 2" 
+  draggable="true" 
+  ondragstart="drag(event)"
+>
+</div>
+
+
+</body>
+</html>
